@@ -1,4 +1,8 @@
-import 'package:aog/widgets/logo.widget.dart';
+
+import 'package:aog/widgets/input.dart';
+import 'package:aog/widgets/loading-button.widget.dart';
+import 'package:aog/widgets/logo-widget.dart';
+import 'package:aog/widgets/submit-form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 
@@ -21,6 +25,7 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
     var _gasCtrl = new MoneyMaskedTextController();
+    var _alcCtrl = new MoneyMaskedTextController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,19 +33,13 @@ class HomePage extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColor,
       body: ListView(
         children: <Widget>[
-             Logo(),
-             TextFormField(
-                controller: _gasCtrl,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                   border: InputBorder.none,
-                ),
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 45,
-                  fontFamily: "Big Shoulder Display",
-                ),
-             ),
+          Logo(),
+          SubmitForm(
+            alcCtrl: _alcCtrl,
+            gasCtrl: _gasCtrl,
+            busy: false,
+            submitFunc: (){},
+            ),
         ],
       ),
     );
